@@ -16,9 +16,15 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          Game: {
+            screens: {
+              GameScreen: 'Game',
+            },
+          },
         },
       },
       NotFound: '*',
+      
     },
   },
 };

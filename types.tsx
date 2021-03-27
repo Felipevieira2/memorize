@@ -1,6 +1,8 @@
 export type RootStackParamList = {
-  Root: undefined;
-  NotFound: undefined;
+    Root: undefined;
+    NotFound: undefined;
+    Game: { numbersColumns: Number, numbersRows: Number };
+    Home: undefined;
 };
 
 export type BottomTabParamList = {
@@ -15,3 +17,5 @@ export type TabOneParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
+
