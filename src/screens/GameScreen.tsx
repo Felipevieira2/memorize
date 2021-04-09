@@ -7,10 +7,10 @@ import { RootStackParamList } from '../../types';
 import { RouteProp } from '@react-navigation/native';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Game'>;
-type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Game'>;
+type GameScreenRouteProp = RouteProp<RootStackParamList, 'Game'>;
 
 type Props = {
-	route: ProfileScreenRouteProp;
+	route: GameScreenRouteProp;
 	navigation: ProfileScreenNavigationProp;
 	arrCards: Array<{text: number, visible: Boolean}>[];
 	tmpArrCards: Array<any>[];
@@ -41,19 +41,20 @@ function GameScreen({route, navigation}: Props) {
 		tmpArrCards = tmpArrCards.sort( (a,b) => { return  a.key-b.key } );
 
 		setArrCards(tmpArrCards);
-		setAllCardNotVisible();
+		//setAllCardNotVisible();
 
 	},[])
 
-	const Item = ({item, props} : any,) => {		
-		console.log(props)
+	const Item = ({item} : any, ) => {		
+
+
 		return (			
 			<TouchableHighlight style={styles.item}
 				activeOpacity={0.6}
 				underlayColor="#DDDDDD"
-				onPress={() => { selectCard(item) }}>
+				onPress={() => { disable = !item.visible }}>
 				<Text style={styles.boxText}> 
-					{item.visible && item.text } 
+					{disable && item.text}
 				</Text>
 			</TouchableHighlight>			
 		)
@@ -71,16 +72,16 @@ function GameScreen({route, navigation}: Props) {
 		
 	}
 
-	const selectCard = (item) => {
-		setArrCards( arrCards )
-		console.log(test)
-	}
+	// const selectCard = (item) => {
+	// 	setArrCards( arrCards )
+	// 	console.log(test)
+	// }
 
 	return (
 		<View style={styles.container}>
 			<View style={{flexDirection: 'row',}}>
 				<FlatList
-					renderItem={()=><Item text={'teste'} />}
+					renderItem={Item}
 					data={arrCards}
 					keyExtractor={(item, index) =>  '_'+index}
 					numColumns={numColumns}		
